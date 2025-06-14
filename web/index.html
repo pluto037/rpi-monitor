@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi - 系统监控</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Raspberry Pi 系统监控</h1>
+            <p id="uptime">系统运行时间: <span class="value">--</span></p>
+        </header>
+        <main class="dashboard-grid">
+            <div class="card">
+                <h2>CPU 使用率</h2>
+                <div class="chart-container">
+                    <canvas id="cpuChart"></canvas>
+                </div>
+                <p class="data-value" id="cpuValue">-- %</p>
+            </div>
+
+            <div class="card">
+                <h2>内存使用率</h2>
+                <div class="chart-container">
+                    <canvas id="ramChart"></canvas>
+                </div>
+                <p class="data-value" id="ramValue">-- %</p>
+            </div>
+
+            <div class="card">
+                <h2>硬盘使用率</h2>
+                <div class="chart-container">
+                    <canvas id="diskChart"></canvas>
+                </div>
+                <p class="data-value" id="diskValue">-- %</p>
+            </div>
+
+            <div class="card">
+                <h2>CPU 温度</h2>
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+                <p class="data-value" id="tempValue">-- °C</p>
+            </div>
+
+            <div class="card">
+                <h2>风扇转速</h2>
+                <div class="chart-container">
+                    <canvas id="fanChart"></canvas>
+                </div>
+                <p class="data-value" id="fanValue">-- RPM</p>
+            </div>
+
+            <div class="card card-wide">
+                <h2>网络流量</h2>
+                <div class="network-stats">
+                    <div class="network-item">
+                        <p class="label">接收 (RX)</p>
+                        <p class="data-value" id="netRxValue">--</p>
+                        <p class="speed-value" id="netRxSpeed">-- MB/s</p>
+                    </div>
+                    <div class="network-item">
+                        <p class="label">发送 (TX)</p>
+                        <p class="data-value" id="netTxValue">--</p>
+                        <p class="speed-value" id="netTxSpeed">-- MB/s</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-wide">
+                <h2>网络接口</h2>
+                <div class="network-ips" id="networkIPs">
+                    <!-- 网络接口信息将通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+
+            <div class="card card-wide">
+                <h2>磁盘挂载点</h2>
+                <div class="disk-mounts" id="diskMounts">
+                    <!-- 磁盘挂载点信息将通过 JavaScript 动态添加 -->
+                </div>
+            </div>
+        </main>
+        <footer>
+            <p>最后更新: <span id="lastUpdated">--</span></p>
+        </footer>
+    </div>
+    <script src="/script.js"></script>
+</body>
+</html>

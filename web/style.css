@@ -1,0 +1,253 @@
+:root {
+    /* 深色主题变量 */
+    --bg-color: #000000;
+    --card-bg: #1c1c1e;
+    --text-color: #ffffff;
+    --text-secondary: #8e8e93;
+    --accent-color: #0a84ff;
+    --success-color: #30d158;
+    --warning-color: #ffd60a;
+    --danger-color: #ff453a;
+    --border-color: #38383a;
+    --chart-bg: rgba(255, 255, 255, 0.1);
+    --font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        /* 浅色主题变量 */
+        --bg-color: #f5f5f7;
+        --card-bg: #ffffff;
+        --text-color: #1d1d1f;
+        --text-secondary: #86868b;
+        --accent-color: #0071e3;
+        --success-color: #34c759;
+        --warning-color: #ff9500;
+        --danger-color: #ff3b30;
+        --border-color: #d2d2d7;
+        --chart-bg: rgba(0, 0, 0, 0.1);
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+header h1 {
+    font-size: 1.75rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(90deg, var(--accent-color), var(--success-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#uptime {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid var(--border-color);
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card h2 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.chart-container {
+    position: relative;
+    width: 100%;
+    height: 120px;
+    margin-bottom: 0.5rem;
+}
+
+.data-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.temp-display, .fan-display {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.unit {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    margin-left: 0.25rem;
+}
+
+.card-wide {
+    grid-column: span 2;
+}
+
+.network-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.network-item {
+    text-align: center;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+}
+
+.network-item .label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.network-item .data-value {
+    font-size: 1.125rem;
+    margin-bottom: 0.25rem;
+}
+
+.network-item .speed-value {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--accent-color);
+    font-family: "SF Mono", monospace;
+}
+
+.network-ips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.network-ip-item {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.network-ip-item .interface {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.25rem;
+}
+
+.network-ip-item .ip {
+    font-size: 1.125rem;
+    font-weight: 500;
+    font-family: "SF Mono", monospace;
+}
+
+.disk-mounts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 0.75rem;
+}
+
+.disk-mount-item {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+}
+
+.disk-mount-item .mountpoint {
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+    color: var(--text-color);
+}
+
+.disk-mount-item .disk-stats {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.disk-mount-item .used-percent {
+    font-weight: 500;
+}
+
+footer {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    margin-top: 1rem;
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.card {
+    animation: fadeIn 0.3s ease-out forwards;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-wide {
+        grid-column: span 1;
+    }
+    
+    .network-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .network-ips, .disk-mounts {
+        grid-template-columns: 1fr;
+    }
+}
